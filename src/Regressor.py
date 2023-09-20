@@ -1,13 +1,15 @@
 import os
 import re
 import warnings
-import pandas as pd
 from typing import List
-from sklearn.exceptions import NotFittedError
-from schema.data_schema import RegressionSchema
+
+import pandas as pd
 from autogluon.tabular import TabularDataset, TabularPredictor
-from joblib import load, dump
+from joblib import dump, load
+from sklearn.exceptions import NotFittedError
+
 from config import paths
+from schema.data_schema import RegressionSchema
 
 warnings.filterwarnings("ignore")
 PREDICTOR_FILE_NAME = "predictor.joblib"
@@ -61,11 +63,13 @@ class Regressor:
         """Construct a new Regressor."""
         self._is_trained: bool = False
         self.predictor: TabularPredictor = TabularPredictor(
-            label=schema.target, eval_metric='root_mean_squared_error', path=paths.PREDICTOR_DIR_PATH
+            label=schema.target,
+            eval_metric="root_mean_squared_error",
+            path=paths.PREDICTOR_DIR_PATH,
         )
         self.train_input = train_input
         self.schema = schema
-        self.model_name = 'AutoGluon_regressor'
+        self.model_name = "AutoGluon_regressor"
 
     def __str__(self):
         return f"Model name: {self.model_name}"

@@ -96,7 +96,9 @@ async def transform_req_data_and_make_predictions(
         model_resources.predictor_model,
         data,
     )
-    predictions_df = pd.DataFrame({model_resources.data_schema.id: ids, 'prediction': predictions_df})
+    predictions_df = pd.DataFrame(
+        {model_resources.data_schema.id: ids, "prediction": predictions_df}
+    )
 
     logger.info("Converting predictions dataframe into response dictionary...")
     predictions_response = create_predictions_response(

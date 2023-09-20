@@ -1,6 +1,7 @@
 import os
 
 from autogluon.core import TabularDataset
+
 from config import paths
 from logger import get_logger, log_error
 from Regressor import Regressor
@@ -35,7 +36,9 @@ def run_training(
         data_schema = load_json_data_schema(input_schema_dir)
         save_schema(schema=data_schema, save_dir_path=saved_schema_dir_path)
         logger.info("Loading training data...")
-        x_train = TabularDataset(read_csv_in_directory(train_dir).drop(columns=data_schema.id))
+        x_train = TabularDataset(
+            read_csv_in_directory(train_dir).drop(columns=data_schema.id)
+        )
 
         regressor = Regressor(x_train, data_schema)
         regressor.train()
