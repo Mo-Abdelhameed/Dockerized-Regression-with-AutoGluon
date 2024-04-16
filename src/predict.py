@@ -37,6 +37,9 @@ def run_batch_predictions(
     logger.info("Saving predictions...")
     save_dataframe_as_csv(dataframe=predictions_df, file_path=predictions_file_path)
     logger.info("Batch predictions completed successfully")
+    print(
+        "Used model:", model.predictor.leaderboard(extra_info=True, silent=True).iloc[0]
+    )
 
 
 if __name__ == "__main__":
