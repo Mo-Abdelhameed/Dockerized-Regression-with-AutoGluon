@@ -1,7 +1,22 @@
+local_test/ml_vol/
+**/test_results/
+**/artifacts
+ml_vol/outputs/
+**/examples/**/*.txt
+
+artifacts/
+hpt_results/
+
+**/*_no_hpt.csv
+**/*_with_hpt.csv
+**/model_*_*_*.json
+
+
 .DS_Store
 .idea/
 src/test.py
 model_inputs_outputs/model/
+model_inputs_outputs/outputs/predictions/*.csv
 logs.log
 configs
 AutogluonModels/
@@ -15,3 +30,14 @@ __pycache__/
 coverage.xml
 *.cover
 .coverage*
+
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
